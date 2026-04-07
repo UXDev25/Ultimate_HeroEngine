@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ultimate_HeroEngine")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+70de14f386b08c8347cc4c8ed032a07657f5192a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ultimate_HeroEngine")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ultimate_HeroEngine")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

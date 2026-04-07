@@ -7,4 +7,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Reference Include="Utils">
+        <HintPath>..\Libs\Utils.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
