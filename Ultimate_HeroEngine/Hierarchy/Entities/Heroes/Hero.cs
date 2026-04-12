@@ -2,9 +2,9 @@
 using Ultimate_HeroEngine.Core;
 using Ultimate_HeroEngine.Core.Interfaces;
 using Ultimate_HeroEngine.Core.Objects;
-using Ultimate_HeroEngine.Hierarchy;
+using Ultimate_HeroEngine.Entities;
 
-namespace Ultimate_HeroEngine.Entities;
+namespace Ultimate_HeroEngine.Hierarchy.Entities.Heroes;
 
 public abstract class Hero : Entity, IUseAbility, IComparable<Hero>
 {
@@ -19,7 +19,7 @@ public abstract class Hero : Entity, IUseAbility, IComparable<Hero>
     }
 
     //**Abilities**
-    public void UseAbility(int abilityIndex, ITargetable target)
+    public void UseAbility(int abilityIndex, ITargetable? target)
     {
         if (target is Entity ent) Console.WriteLine(Messages.UseAbility, ent.GetType().Name, Name, Abilities[abilityIndex].Name);
         if (target is Team team)
@@ -30,7 +30,7 @@ public abstract class Hero : Entity, IUseAbility, IComparable<Hero>
                 Abilities[abilityIndex].Execute(member);
             }
         }
-        else Abilities[abilityIndex].Execute((Entity)target);
+        else Abilities[abilityIndex].Execute((Entity)target!);
     }
     
     public void AssignAbilitiesToUser()
@@ -47,10 +47,10 @@ public abstract class Hero : Entity, IUseAbility, IComparable<Hero>
     public override string GetCategoryName() => "Hero";
     public virtual string GetAbilityCostValue() => KeyValues.DefAbilityCost;
 
-    public override void AttackMeth(Entity target)
+    public override void AttackMeth(Entity? target)
     {
         base.AttackMeth(target);
-        if (target.IsDefeated && target is Enemy) KillCount++;
+        if (target!.IsDefeated && target is Enemy) KillCount++;
     }
     
     //*IComparable

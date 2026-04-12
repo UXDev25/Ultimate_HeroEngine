@@ -19,10 +19,10 @@ public static class LogRegister
 
         string filePath = Path.GetFullPath(Path.Combine(directoryPath, @"..\..\..\Files\BattleLogs.txt"));
 
-        string targetDirectory = Path.GetDirectoryName(filePath);
+        string? targetDirectory = Path.GetDirectoryName(filePath);
         if (!Directory.Exists(targetDirectory))
         {
-            Directory.CreateDirectory(targetDirectory);
+            Directory.CreateDirectory(targetDirectory!);
         }
         string finalLine = $"{logMessage}\n";
         File.AppendAllText(filePath, finalLine);

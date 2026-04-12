@@ -1,6 +1,7 @@
 ﻿using Ultimate_HeroEngine.Abilities;
 using Ultimate_HeroEngine.Core.Enums;
 using Ultimate_HeroEngine.Core.Interfaces;
+using Ultimate_HeroEngine.Hierarchy.Abilities;
 
 namespace Ultimate_HeroEngine.Core.Objects;
 

@@ -3,6 +3,7 @@ using Ultimate_HeroEngine.Core;
 using Ultimate_HeroEngine.Core.Enums;
 using Ultimate_HeroEngine.Core.Interfaces;
 using Ultimate_HeroEngine.Hierarchy;
+using Ultimate_HeroEngine.Logic.ProgramEngine;
 
 namespace Ultimate_HeroEngine.Entities;
 
@@ -60,9 +61,9 @@ public abstract class Entity : IAttack, ITargetable
     /// Calculates the outgoing damage based on the entity's current skill level and default power modifiers.
     /// </summary>
     /// <param name="target">The entity that will receive the attack.</param>
-    public virtual void AttackMeth(Entity target)
+    public virtual void AttackMeth(Entity? target)
     {
-        Console.WriteLine(Messages.Attack, GetType().Name.ToUpper(), Name, target.GetType().Name, target.Name);
+        Console.WriteLine(Messages.Attack, GetType().Name.ToUpper(), Name, target!.GetType().Name, target.Name);
         target.ReceiveDamage(Skill * KeyValues.DefPower);
     }
 

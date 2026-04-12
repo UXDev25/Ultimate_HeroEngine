@@ -29,7 +29,7 @@ public class Elite : Enemy, IUseAbility
     
     
     //**Abilities
-    public void UseAbility(int abilityIndex, ITargetable target)
+    public void UseAbility(int abilityIndex, ITargetable? target)
     {
         if (target is Entity ent) Console.WriteLine(Messages.UseAbility, ent.GetType().Name, Name, Abilities[abilityIndex].Name);
         if (target is Team team)
@@ -40,7 +40,7 @@ public class Elite : Enemy, IUseAbility
                 Abilities[abilityIndex].Execute(member);
             }
         }
-        else Abilities[abilityIndex].Execute((Entity)target);
+        else Abilities[abilityIndex].Execute((Entity)target!);
     }
     
     public void AssignAbilitiesToUser()

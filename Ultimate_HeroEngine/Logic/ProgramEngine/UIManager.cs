@@ -1,11 +1,11 @@
-﻿using Ultimate_HeroEngine.Abilities;
+﻿using Ultimate_HeroEngine.Core;
 using Ultimate_HeroEngine.Entities;
 using Ultimate_HeroEngine.Hierarchy;
-using Utils;
+using Ultimate_HeroEngine.Hierarchy.Entities.Heroes;
 
-namespace Ultimate_HeroEngine.Core;
+namespace Ultimate_HeroEngine.Logic.ProgramEngine;
 
-public static class UIManager
+public static class UiManager
 {
     /// <summary>
     /// Asks the user to insert a key to continue with the program thread
@@ -21,9 +21,9 @@ public static class UIManager
     /// and then lists all individual members.
     /// </summary>
     /// <param name="team">The team whose header and members will be displayed.</param>
-    public static void ListTeam(Team team)
+    public static void ListTeam(Team? team)
     {
-        string teamData = String.Format(UI.TeamTitle, team.Members[0].GetCategoryName(), team.Members.Count + team.DefeatedMembers.Count);
+        string teamData = String.Format(UI.TeamTitle, team!.Members[0].GetCategoryName(), team.Members.Count + team.DefeatedMembers.Count);
         Console.WriteLine(UI.GenDivider, teamData);
         ShowMembers(team);
     }
@@ -33,7 +33,7 @@ public static class UIManager
     /// from the specified team.
     /// </summary>
     /// <param name="targets">The team containing the available target entities.</param>
-    public static void ListTargets(Team targets)
+    public static void ListTargets(Team? targets)
     {
         Console.WriteLine(UI.SelectTarget);
         ShowMembers(targets);
@@ -44,10 +44,10 @@ public static class UIManager
     /// (such as name, HP, class, and defeat status) in a numbered list format.
     /// </summary>
     /// <param name="team">The team whose members' statistics will be shown.</param>
-    public static void ShowMembers(Team team)
+    public static void ShowMembers(Team? team)
     {
         int i = 1;
-        List<Entity> allMembers = team.Members.Concat(team.DefeatedMembers).ToList();
+        List<Entity> allMembers = team!.Members.Concat(team.DefeatedMembers).ToList();
         foreach (var entity in allMembers)
         {
             Console.WriteLine(String.Format(UI.EntityStats, i, entity.GetCategoryName(), entity.Name, entity.Hp, entity.MaxHp, entity.GetType().Name) + String.Format(entity.IsDefeated ? UI.DefeatState : ""));

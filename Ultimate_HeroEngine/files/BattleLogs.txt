@@ -1,0 +1,22 @@
+
+==================================================
+BATTLE LOG - Round 1
+--------------------------------------------------
+[Warrior]  Michael > Ability > 199,7
+[Mage]  Cheich > Ability > 39,7
+[Rogue]  Gonzalez > Ability > 479,7
+[Minion]  Slime > Attack > 119,5
+==================================================
+BATTLE LOG - Round 1
+--------------------------------------------------
+[Warrior]  Michael > Attack > 199,7
+[Mage]  Cheich > Ability > 39,7
+[Rogue]  Gonzalez > Ability > 479,7
+[Elite]  Elite Guard > Attack > 479,5
+[Elite]  Dark Cultist > Ability > 479,5
+==================================================
+BATTLE LOG - Round 2
+--------------------------------------------------
+[Warrior]  Michael > Ability > 199,7
+[Elite]  Elite Guard > Attack > 199,7
+[Elite]  Dark Cultist > Ability > 199,7
