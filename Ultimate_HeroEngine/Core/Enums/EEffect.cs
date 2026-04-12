@@ -2,6 +2,8 @@
 
 public enum EEffect
 {
-    Sleep,
-    Confuse
+    Nothing,
+    Cheer,
+    InstaKill,
+    TellFacts
 }

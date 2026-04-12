@@ -5,5 +5,5 @@ namespace Ultimate_HeroEngine.Entities;
 
 public class Minion : Enemy
 {
-    public Minion(string name, int level, float hp, float skill, int defenseBuff) : base(name, level, hp, skill, defenseBuff) { }
+    public Minion(string name, int level, float hp, float skill, float defenseBuff) : base(name, level, hp, skill, defenseBuff) { }
 }

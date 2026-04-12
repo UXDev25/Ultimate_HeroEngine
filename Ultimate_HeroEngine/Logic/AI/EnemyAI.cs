@@ -17,14 +17,16 @@ public static class EnemyAI
         foreach (var enemy in enemyTeam.Members)
         {
             ECombatAction actionChoice = (ECombatAction)rand.Next(KeyValues.ActionMinNumber, KeyValues.ActionMaxNumber);
-            if (enemy is IUseAbility notMinion)
+            if (enemy is IUseAbility notMinion && actionChoice == ECombatAction.Ability)
             {
-                int abilityIndex = rand.Next(0, notMinion.Abilities.Count - 1);
+                int abilityIndex = rand.Next(0, notMinion.Abilities.Count);
                 target = SelectTargetEnemy((Enemy)notMinion, notMinion.Abilities[abilityIndex], enemyTeam, heroTeam, allEntities);
                 actionList.Add(new Action(enemy,actionChoice,abilityIndex,target));
             }
             else
             {
+                if (!(enemy is IUseAbility) && actionChoice == ECombatAction.Ability) actionChoice = ECombatAction.Attack;
+                
                 target = SelectTargetEnemy((Enemy)enemy, null, enemyTeam, heroTeam, allEntities);
                 actionList.Add(new Action(enemy,actionChoice,target));
             }
@@ -35,7 +37,7 @@ public static class EnemyAI
     private static ITargetable SelectTargetEnemy(Enemy enemy, Ability? chosenAbility, Team enemyTeam, Team heroTeam, Team allEntities)
     {
         var rand = new Random();
-        ETarget currentTargetType = chosenAbility?.TargetType ?? ETarget.SingleEnemy; 
+        ETarget currentTargetType = chosenAbility != null ? chosenAbility.TargetType : ETarget.SingleEnemy; 
         switch (currentTargetType)
         {
             case ETarget.SingleAny: return allEntities.Members[rand.Next(0, allEntities.Members.Count)];

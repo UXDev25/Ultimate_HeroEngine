@@ -4,7 +4,7 @@ using Ultimate_HeroEngine.Entities;
 
 namespace Ultimate_HeroEngine.Hierarchy.BattleField;
 
-public class Action : IComparer<Action>
+public class Action : IComparable<Action>
 {
     public Entity SelectedUser { get; set; }
     public ECombatAction ActionType { get; set; }
@@ -32,12 +32,10 @@ public class Action : IComparer<Action>
         ActionType = actionType;
     }
     
-    //***IComparer***
-    public int Compare(Action? x, Action? y)
+    //***IComparable***
+    public int CompareTo(Action? other)
     {
-        if (x == null && y == null) return 0;
-        if (x == null) return -1;
-        if (y == null) return 1;
-        return x.SelectedUser.Level.CompareTo(y.SelectedUser.Level);
+        if (other == null) return 1; 
+        return SelectedUser.Level.CompareTo(other.SelectedUser.Level);
     }
 }
