@@ -1,6 +1,8 @@
 ﻿using Ultimate_HeroEngine.Entities;
+using Ultimate_HeroEngine.Hierarchy;
+using Ultimate_HeroEngine.Hierarchy.Entities.Heroes;
 
-namespace Ultimate_HeroEngine.Hierarchy;
+namespace Ultimate_HeroEngine.Logic.ProgramEngine;
 
 public static class StatCalculator
 {

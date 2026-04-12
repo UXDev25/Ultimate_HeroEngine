@@ -3,16 +3,18 @@ using Ultimate_HeroEngine.Core;
 using Ultimate_HeroEngine.Core.Enums;
 using Ultimate_HeroEngine.Core.Interfaces;
 using Ultimate_HeroEngine.Entities;
+using Ultimate_HeroEngine.Hierarchy;
+using Ultimate_HeroEngine.Logic.SupportClasses;
 
-namespace Ultimate_HeroEngine.Hierarchy.BattleField.AI;
+namespace Ultimate_HeroEngine.Logic.AI;
 
-public static class EnemyAI
+public static class EnemyAi
 {
-    public static List<Action> GetEnemyActions(Team enemyTeam, Team heroTeam, Team allEntities)
+    public static List<CombatAction> GetEnemyActions(Team enemyTeam, Team heroTeam, Team allEntities)
     {
-        var actionList = new List<Action>();
+        var actionList = new List<CombatAction>();
         var rand = new Random();
-        ITargetable target;
+        ITargetable? target;
         
         foreach (var enemy in enemyTeam.Members)
         {
@@ -21,20 +23,20 @@ public static class EnemyAI
             {
                 int abilityIndex = rand.Next(0, notMinion.Abilities.Count);
                 target = SelectTargetEnemy((Enemy)notMinion, notMinion.Abilities[abilityIndex], enemyTeam, heroTeam, allEntities);
-                actionList.Add(new Action(enemy,actionChoice,abilityIndex,target));
+                actionList.Add(new CombatAction(enemy,actionChoice,abilityIndex,target));
             }
             else
             {
                 if (!(enemy is IUseAbility) && actionChoice == ECombatAction.Ability) actionChoice = ECombatAction.Attack;
                 
                 target = SelectTargetEnemy((Enemy)enemy, null, enemyTeam, heroTeam, allEntities);
-                actionList.Add(new Action(enemy,actionChoice,target));
+                actionList.Add(new CombatAction(enemy,actionChoice,target));
             }
         }
         return actionList;
     }
     
-    private static ITargetable SelectTargetEnemy(Enemy enemy, Ability? chosenAbility, Team enemyTeam, Team heroTeam, Team allEntities)
+    private static ITargetable? SelectTargetEnemy(Enemy enemy, Ability? chosenAbility, Team enemyTeam, Team heroTeam, Team allEntities)
     {
         var rand = new Random();
         ETarget currentTargetType = chosenAbility != null ? chosenAbility.TargetType : ETarget.SingleEnemy; 

@@ -25,13 +25,13 @@ public abstract class Ability : IComparable<Ability>
         }
     }
     public ETarget TargetType { get; set; }
-    public Entity User { get; set; }
+    public Entity? User { get; set; }
 
     public EClasses ClassType { get; set; }
 
-    public abstract void Execute(Entity target);
+    public abstract void Execute(Entity? target);
     
-    public Ability(string name, int cost, ERarity rarity, int power, ETarget targetType, Entity user, EClasses classType)
+    public Ability(string name, int cost, ERarity rarity, int power, ETarget targetType, Entity? user, EClasses classType)
     {
         Name = name;
         Cost = cost;

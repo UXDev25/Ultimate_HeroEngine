@@ -39,14 +39,14 @@ public class BugBoss : Enemy, IUseAbility
         Console.WriteLine(Messages.Recieved, GetType().Name.ToUpper(), Name, actualDamage, Hp, MaxHp);
     }
 
-    public override void AttackMeth(Entity target)
+    public override void AttackMeth(Entity? target)
     {
-        Console.WriteLine(Messages.Attack, GetType().Name.ToUpper(), Name, target.GetType().Name, target.Name);
+        Console.WriteLine(Messages.Attack, GetType().Name.ToUpper(), Name, target!.GetType().Name, target.Name);
         target.ReceiveDamage(Skill * KeyValues.DefBossPow * DmgMult);
     }
     
     //**Abilities
-    public void UseAbility(int abilityIndex, ITargetable target)
+    public void UseAbility(int abilityIndex, ITargetable? target)
     {
         if (target is Entity ent) Console.WriteLine(Messages.UseAbility, ent.GetType().Name, Name, Abilities[abilityIndex].Name);
         if (target is Team team)
@@ -57,7 +57,7 @@ public class BugBoss : Enemy, IUseAbility
                 Abilities[abilityIndex].Execute(member);
             }
         }
-        else Abilities[abilityIndex].Execute((Entity)target);
+        else Abilities[abilityIndex].Execute((Entity)target!);
     }
     
     public void AssignAbilitiesToUser()

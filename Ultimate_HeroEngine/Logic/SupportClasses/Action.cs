@@ -2,16 +2,16 @@
 using Ultimate_HeroEngine.Core.Interfaces;
 using Ultimate_HeroEngine.Entities;
 
-namespace Ultimate_HeroEngine.Hierarchy.BattleField;
+namespace Ultimate_HeroEngine.Logic.SupportClasses;
 
-public class Action : IComparable<Action>
+public class CombatAction : IComparable<CombatAction>
 {
     public Entity SelectedUser { get; set; }
     public ECombatAction ActionType { get; set; }
     public int AbilityIndex { get; set; }
-    public ITargetable Target { get; set; }
+    public ITargetable? Target { get; set; }
 
-    public Action(Entity selectedUser, ECombatAction actionType, int abilityIndex, ITargetable target) //To act with an hability
+    public CombatAction(Entity selectedUser, ECombatAction actionType, int abilityIndex, ITargetable? target) //To act with an hability
     {
         SelectedUser = selectedUser;
         ActionType = actionType;
@@ -19,21 +19,21 @@ public class Action : IComparable<Action>
         Target = target;
     }
     
-    public Action(Entity selectedUser, ECombatAction actionType, ITargetable target) //To act without an hability
+    public CombatAction(Entity selectedUser, ECombatAction actionType, ITargetable? target) //To act without an hability
     {
         SelectedUser = selectedUser;
         ActionType = actionType;
         Target = target;
     }
     
-    public Action(Entity selectedUser, ECombatAction actionType) //To act in general
+    public CombatAction(Entity selectedUser, ECombatAction actionType) //To act in general
     {
         SelectedUser = selectedUser;
         ActionType = actionType;
     }
     
     //***IComparable***
-    public int CompareTo(Action? other)
+    public int CompareTo(CombatAction? other)
     {
         if (other == null) return 1; 
         return SelectedUser.Level.CompareTo(other.SelectedUser.Level);

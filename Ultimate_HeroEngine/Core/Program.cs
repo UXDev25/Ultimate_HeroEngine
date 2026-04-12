@@ -1,8 +1,6 @@
-﻿using Ultimate_HeroEngine.Core.Objects;
-using Ultimate_HeroEngine.Entities;
-using Ultimate_HeroEngine.Hierarchy;
-using Ultimate_HeroEngine.Hierarchy.BattleField;
-using Ultimate_HeroEngine.Logic.SupportClasses;
+﻿using Ultimate_HeroEngine.Logic.ProgramEngine;
+
+namespace Ultimate_HeroEngine.Core;
 
 public static class Program
 {
@@ -10,7 +8,7 @@ public static class Program
     {
         
         MenuManager.PresentProgram();
-        CombatEngine battle = new CombatEngine(new Team());
+        CombatEngine battle = new CombatEngine();
         MenuManager.CombatFlow(battle);
     }
 }

@@ -2,10 +2,8 @@
 using Ultimate_HeroEngine.Core.Objects;
 using Ultimate_HeroEngine.Entities;
 using Ultimate_HeroEngine.Hierarchy;
-using Ultimate_HeroEngine.Hierarchy.BattleField;
-using Utils;
 
-namespace Ultimate_HeroEngine.Logic.SupportClasses;
+namespace Ultimate_HeroEngine.Logic.ProgramEngine;
 
 public static class MenuManager
 {
@@ -17,7 +15,7 @@ public static class MenuManager
     {
         Console.WriteLine(UI.GenDivider, UI.Title);
         Console.WriteLine(UI.Team);
-        UIManager.ContinueAsk();
+        UiManager.ContinueAsk();
         Console.Clear();
     }
 

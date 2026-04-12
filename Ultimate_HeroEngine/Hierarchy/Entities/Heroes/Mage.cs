@@ -1,5 +1,6 @@
 ﻿using Ultimate_HeroEngine.Abilities;
 using Ultimate_HeroEngine.Core;
+using Ultimate_HeroEngine.Hierarchy.Entities.Heroes;
 
 namespace Ultimate_HeroEngine.Entities;
 
